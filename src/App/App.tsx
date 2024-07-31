@@ -2,6 +2,7 @@ import React from 'react';
 import Home from "../features/Home/Home";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import UserPage from '../features/UserPage/UserPage';
 
 function App(): JSX.Element {
 
@@ -9,7 +10,7 @@ function App(): JSX.Element {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />}>
-          {/* <Route path="user/:login" element={<UserPage />} /> */}
+          <Route path="user/:login" element={<UserPage />} />
         </Route>
       </Routes>
     </div>
