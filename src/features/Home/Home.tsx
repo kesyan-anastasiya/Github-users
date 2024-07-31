@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from "react";
 
-function Home() {
+function Home(): JSX.Element {
   const [query, setQuery] = useState("");
   console.log(query)
 
@@ -9,7 +9,7 @@ function Home() {
     <>
       <input
         type="text"
-        placeholder="Найти пользователя Github"
+        placeholder="Find github user"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       ></input>
