@@ -19,34 +19,40 @@ function UserPage(): JSX.Element {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`https://api.github.com/users/${login}`)
-      .then((response) => {
-        setUser(response.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false), [login]);
-
-    if (loading) {
-      return <div>Loading...</div>;
+    if (login) {
+      axios
+        .get(`https://api.github.com/users/${login}`)
+        .then((response) => {
+          setUser(response.data);
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+        });
     }
+  }, [login]);
 
-    if (!user) {
-      return <div>User is not found.</div>;
-    }
-  });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <div>User is not found.</div>;
+  }
 
   return (
-    <>
-      <img src={user?.avatar_url} alt={user?.login} />
-      <h2>{user?.login}</h2>
-      <p>Type: {user?.type}</p>
-      <p>Name: {user?.name}</p>
-      <p>Bio: {user?.bio}</p>
-      <p>Location: {user?.location}</p>
-      <p>Blog: <a href={user?.blog}>{user?.blog}</a></p>
-      <p>Company: {user?.company}</p>
-    </>
+    <div>
+      <img src={user.avatar_url} alt={user.login} />
+      <h2>{user.login}</h2>
+      <p>Type: {user.type}</p>
+      <p>Name: {user.name}</p>
+      <p>Bio: {user.bio}</p>
+      <p>Location: {user.location}</p>
+      <p>
+        Blog: <a href={user.blog}>{user.blog}</a>
+      </p>
+      <p>Company: {user.company}</p>
+    </div>
   );
 }
 
