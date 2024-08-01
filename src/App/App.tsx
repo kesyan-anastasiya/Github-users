@@ -2,7 +2,7 @@ import React from 'react';
 import Home from "../features/Home/Home";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import UserPage from '../features/UserPage/UserPage';
+import UserPage from '../features/User/UserPage';
 
 function App(): JSX.Element {
 
